@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>EditorConfig vs. Ascribe: Comparison between EditorConfig and Ascribe | Alex Vear</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="author" content="Alex Vear" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="subject" content="" />
+    <meta name="copyright" content="Alex Vear" />
+    <meta name="licence" content="CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)" />
+
+    <meta name="title" content="EditorConfig vs. Ascribe" />
+    <meta name="subtitle" content="Comparison between EditorConfig and Ascribe" />
+    <meta name="date" content="" />
+    <meta name="published" content="" />
+    <meta name="topic" content="" />
+
+    <meta name="og:type" content="website" />
+    <meta name="og:title" content="EditorConfig vs. Ascribe" />
+    <meta name="og:description" content="" />
+    <meta name="og:image" content="/favicon.jpg" />
+    <meta name="og:site_name" content="Alex Vear" />
+
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" type="text/css" href="/fonts/inter.css" />
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome.css" />
+
+    <link href="/essays/atom.xml" type="application/atom+xml" rel="alternate" title="Alex Vear's Essays" />
+
+    <link rel="shortcut icon" type="image/jpeg" href="/favicon.jpg">
+
+    
+    
+  </head>
+
+  <body>
+    <header>
+      <a class="skip-link" href="#main-content">Skip to content</a>
+
+      <div class="section nav-section">
+        <nav class="navigation">
+          <h1><a title="Home" href="/">Alex Vear</a></h1>
+          <ul>
+            <li><a title="Essays" href="/essays/">essays</a></li>
+            <li><a title="Projects" href="/projects/">projects</a></li>
+            <li><a title="Contact me" href="/contact/" rel="nofollow">contact</a></li>
+            <li>
+              <a title="GitHub" href="https://github.com/axvr" target="_blank">
+                <i class="fab fa-github" role="img" aria-label="GitHub"></i>
+              </a>
+            </li>
+            <li>
+              <a title="Atom/RSS" href="/essays/atom.xml" target="_blank" rel="nofollow">
+                <i class="fab fa-rss" role="img" aria-label="Atom/RSS"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="section bread-section">
+        <nav class="bread"><span><a href="/">home</a> &rsaquo; <a href="../../">projects</a> &rsaquo; <a href="../">ascribe</a> &rsaquo; vs</span></nav>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <div class="section intro-section">
+        <div class="intro"><h1>EditorConfig vs. Ascribe</h1><h2>Comparison between EditorConfig and Ascribe</h2></div>
+      </div>
+
+      <div class="section content-section">
+        <div class="content">
+          <p>Both Ascribe and EditorConfig have clear advantages and disadvantages.  I have created this page to provide an overview and basic comparison between the two tools, to enable you to make an informed decision about which one to use.</p><h2 id="a&#95;quick&#95;overview&#95;of&#95;the&#95;two&#95;tools">A quick overview of the two tools</h2><h3 id="<a href='https://editorconfig.org/'>EditorConfig</a>"><a href='https://editorconfig.org/'>EditorConfig</a></h3><p>EditorConfig is a standard which defines a file (<code>.editorconfig</code>), and a format for that file.  The standard also defines several options which that file can contain, each of these options can change the behaviour of the developer's editor when editing specific files.</p><p>In order for the behaviour of an editor to be altered, an extension needs to be installed to that specific editor (some editors support the EditorConfig standard out-of-the-box).</p><p>The EditorConfig project develops multiple parsers for their custom file format, written in a range of languages; intended to be used within the editor extensions they create.</p><p>EditorConfig does not depend on any version control tools.</p><h3 id="<a href='../'>Ascribe</a>"><a href='../'>Ascribe</a></h3><p>The Ascribe standard reuses the <code>.gitattributes</code> file commonly found in many projects.  It defines how to use specific attributes in the <code>.gitattributes</code> to alter the behaviour of editors.</p><p>Ascribe makes use of the existing attributes commonly used by Git (e.g. <code>eol</code> and <code>binary</code>), and adds some editor specific ones on top.  These attributes are used by Ascribe extensions which can be installed to the editor.</p><p>Since Ascribe uses the <code>.gitattributes</code> file, and reuses some of the existing attributes, several important options are enforced at the VCS level by Git. This reduces problems for developers who don't use a supported editor.</p><p>Ascribe depends on the <a href='https://git-scm.com/'>Git version control system</a>.</p><h2 id="head&#95;to&#95;head&#95;comparison">Head to head comparison</h2><h3 id="editorconfig">EditorConfig</h3><h4 id="benefits">Benefits</h4><ul><li>Well supported, many extensions exist and it is very popular.</li><li><code>.editorconfig</code> files are easier to understand than <code>.gitattributes</code> files.</li></ul><h4 id="problems">Problems</h4><ul><li>Requires the creation of large, complex and unreliable/bug-prone extensions.</li><li>File encoding rules don't actually work when used with Git (Git will still  store and checkout the file in UTF-8 unless you use the <code>.gitattributes</code> file).</li><li>Some implementations suffer from security issues caused by accidental arbitrary  code execution (e.g. <a href='https://github.com/sgur/vim-editorconfig/issues/31'>#31</a> & <a href='https://github.com/sgur/vim-editorconfig/issues/33'>#33</a> in an <a href='https://github.com/sgur/vim-editorconfig/'>unofficial Vim extension</a>).</li></ul><h3 id="ascribe">Ascribe</h3><h4 id="benefits">Benefits</h4><ul><li>Ascribe extensions are significantly simpler and easier to write than  EditorConfig extensions.</li><li>Some options are enforced at the VCS level.</li><li>Keeps all information on project files in a centralised location (many other  tools use the <code>.gitattributes</code> file to get file information).</li><li>Global <code>.gitattributes</code> file are possible (although not recommended).</li></ul><h4 id="problems">Problems</h4><ul><li>The <code>.gitattributes</code> file format is difficult to understand.</li><li>Not many editor extensions available at the moment.</li><li>Depends on Git.</li></ul>
+        </div>
+      </div>
+    </main>
+
+    <div class="section footer-section">
+      <footer class="footer">
+        <span><abbr title="CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)">© 2022 Alex Vear</abbr></span>
+        <span><a title="Back to top of page" href="#top" rel="nofollow">Going up?</a></span>
+      </footer>
+    </div>
+
+  </body>
+</html>
