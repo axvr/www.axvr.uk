@@ -37,15 +37,28 @@
     <link rel="shortcut icon" type="image/jpeg" href="/favicon.jpg">
 
     
-    <style>#main-content {
+    <style>
+  #main-content {
+    --blend-mode: lighten;
+    --color: rgba(255,255,255,0.4);
+  }
+
+  #main-content {
      background-image: url('/hero.jpg');
      background-repeat: no-repeat;
-     background-blend-mode: lighten;
-     background-color: rgba(255,255,255,0.4);
+     background-blend-mode: var(--blend-mode);
+     background-color: var(--color);
      background-attachment: fixed;
      background-position: center;
      background-size: cover;
-   }</style>
+   }
+
+  @media (prefers-color-scheme: dark) {
+    #main-content {
+      --blend-mode: darken;
+      --color: rgba(0,0,0,0.6);
+    }
+  }</style>
   </head>
 
   <body>
